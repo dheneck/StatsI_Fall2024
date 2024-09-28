@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.24)  26 SEP 2024 17:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.24)  28 SEP 2024 11:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -941,7 +941,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 89.
-(Daniel_Heneck_PS1.R
+(PS01_AnswersDH.R
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 4
 1.
 
@@ -959,9 +959,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
-(Daniel_Heneck_PS1.R)
+(PS01_AnswersDH.R)
 
-[2] (Daniel_Heneck_PS1.R)
+[2] (PS01_AnswersDH.R)
 
 [3]
 <Figure1.1.png, id=71, 770.88pt x 481.8pt>
@@ -1039,9 +1039,9 @@ Package rerunfilecheck Info: File `PS01_AnswersDH.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27449 strings out of 473899
- 482469 string characters out of 5726500
- 1173162 words of memory out of 5000000
+ 27448 strings out of 473899
+ 482425 string characters out of 5726500
+ 1173159 words of memory out of 5000000
  49776 multiletter control sequences out of 15000+600000
  568855 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1059,7 +1059,7 @@ e/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Use
 rs/dhene/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pf
 b><C:/Users/dhene/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmtt12.pfb>
-Output written on PS01_AnswersDH.pdf (11 pages, 307185 bytes).
+Output written on PS01_AnswersDH.pdf (11 pages, 307455 bytes).
 PDF statistics:
  193 PDF objects out of 1000 (max. 8388607)
  62 named destinations out of 1000 (max. 500000)

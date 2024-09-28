@@ -41,7 +41,7 @@ y <- c(105, 69, 86, 100, 82, 111, 104, 110, 87, 108, 87, 90, 94, 113, 112, 98, 8
 mean_y <- mean(y) # Point Estimate
 std_error <- sd(y)/sqrt(length(y)) # Standard Error
 
-# T-Score
+# T-Score (since n<30, use T-score instead of Z-score)
 t_score <- qt(0.95, df=length(y)-1)
 
 # Upper Bound
@@ -63,7 +63,7 @@ length(y)
 
 # Step 2: Hypotheses
 # H0: The average student IQ  in the counselor's school is less than or equal to 100
-# H1: The average student IQ in the counselor's school is higher than 100
+# H1: The average student IQ in the counselor's school is greater than 100
 
 # Step 3: Calculating Test Statistic
 t_score <- (mean_y-100)/(std_error)
@@ -84,6 +84,8 @@ expenditure <- read.table("https://raw.githubusercontent.com/ASDS-TCD/StatsI_Fal
 
 # Summary of Data Set 
 summary(expenditure)
+summary(expenditure$STATE)
+summary(expenditure$Region)
 
 # Figure 1.1
 png("Figure1.1.png",width = 1600, height = 1000, res = 150)
