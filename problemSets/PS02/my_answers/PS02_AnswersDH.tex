@@ -1,0 +1,234 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\usepackage{float}
+\usepackage{hyperref}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\title{Problem Set 2}
+\date{Due: October 14, 2024}
+\author{Applied Stats/Quant Methods 1}
+
+\begin{document}
+	\maketitle
+	\section*{Instructions}
+\begin{itemize}
+	\item Please show your work! You may lose points by simply writing in the answer. If the problem requires you to execute commands in \texttt{R}, please include the code you used to get your answers. Please also include the \texttt{.R} file that contains your code. If you are not sure if work needs to be shown for a particular problem, please ask.
+	\item Your homework should be submitted electronically on GitHub.
+	\item This problem set is due before 23:59 on Monday October 14, 2024. No late assignments will be accepted.
+
+\end{itemize}
+
+	
+	\vspace{.5cm}
+	\section*{Question 1: Political Science}
+		\vspace{.25cm}
+	The following table was created using the data from a study run in a major Latin American city.\footnote{Fried, Lagunes, and Venkataramani (2010). ``Corruption and Inequality at the Crossroad: A Multimethod Study of Bribery and Discrimination in Latin America. \textit{Latin American Research Review}. 45 (1): 76-97.} As part of the experimental treatment in the study, one employee of the research team was chosen to make illegal left turns across traffic to draw the attention of the police officers on shift. Two employee drivers were upper class, two were lower class drivers, and the identity of the driver was randomly assigned per encounter. The researchers were interested in whether officers were more or less likely to solicit a bribe from drivers depending on their class (officers use phrases like, ``We can solve this the easy way'' to draw a bribe). The table below shows the resulting data.
+
+\newpage
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l | c c c }
+		& Not Stopped & Bribe requested & Stopped/given warning \\
+		\\[-1.8ex] 
+		\hline \\[-1.8ex]
+		Upper class & 14 & 6 & 7 \\
+		Lower class & 7 & 7 & 1 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\begin{enumerate}
+	
+	\item [(a)]
+	Calculate the $\chi^2$ test statistic by hand/manually (even better if you can do "by hand" in \texttt{R}).\\
+	\vspace{0.1cm}
+	
+	\lstinputlisting[language=R, firstline=9, lastline=29]{PS02_AnswersDH.R}
+	\begin{verbatim}
+		Chi-Squared Test Statistic = 3.79
+	\end{verbatim} 
+	
+	
+	\item [(b)]
+	Now calculate the p-value from the test statistic you just created (in \texttt{R}).\footnote{Remember frequency should be $>$ 5 for all cells, but let's calculate the p-value here anyway.}  What do you conclude if $\alpha = 0.1$?\\
+	
+	\newpage
+	
+	\lstinputlisting[language=R, firstline=33, lastline=38]{PS02_AnswersDH.R}
+	\noindent
+	P-value = 0.15. Since the p-value is greater than 0.1, there is not sufficient evidence to reject the null hypothesis that officers soliciting a bribe from drivers is statistically independent of class when a = 0.1. We therefore conclude the two variables are statistically independent of each other.
+	
+	
+	\item [(c)] Calculate the standardized residuals for each cell and put them in the table below.
+	\vspace{1cm}
+	\lstinputlisting[language=R, firstline=46, lastline=56]{PS02_AnswersDH.R}
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{l | c c c }
+			& Not Stopped & Bribe requested & Stopped/given warning \\
+			\hline
+			Upper class  & 0.136 & -0.815 & 0.819 \\
+			Lower class  & -0.813& 1.094 & -1.099 \\ 
+		\end{tabular}
+	\end{table}
+	
+	
+	\vspace{1cm}
+	\item [(d)] How might the standardized residuals help you interpret the results? 
+	 
+	\noindent
+	 Cell-by-cell comparison of the residuals helps describe the pattern of association among the cells - thereby making it clearer exactly where any deviations from independence between variables may be taking place. A cell with a large standardized residual provides evidence against independence in that cell. When H0 is true, there is approximately a 5\% chance that any cell has a standardized residual value that exceeds 2.
+	 
+	 In the table above, all of the standardized residuals are below 2 in absolute value. This indicates that there is not strong evidence of dependence in any of the cells - further backing up the chi-squared test results which indicated the two variables are statistically independent.
+\end{enumerate}
+\newpage
+
+\section*{Question 2: Economics}
+Chattopadhyay and Duflo were interested in whether women promote different policies than men.\footnote{Chattopadhyay and Duflo. (2004). ``Women as Policy Makers: Evidence from a Randomized Policy Experiment in India. \textit{Econometrica}. 72 (5), 1409-1443.} Answering this question with observational data is pretty difficult due to potential confounding problems (e.g. the districts that choose female politicians are likely to systematically differ in other aspects too). Hence, they exploit a randomized policy experiment in India, where since the mid-1990s, $\frac{1}{3}$ of village council heads have been randomly reserved for women. A subset of the data from West Bengal can be found at the following link: \url{https://raw.githubusercontent.com/kosukeimai/qss/master/PREDICTION/women.csv}\\
+
+\noindent Each observation in the data set represents a village and there are two villages associated with one GP (i.e. a level of government is called "GP"). Figure~\ref{fig:women_desc} below shows the names and descriptions of the variables in the dataset. The authors hypothesize that female politicians are more likely to support policies female voters want. Researchers found that more women complain about the quality of drinking water than men. You need to estimate the effect of the reservation policy on the number of new or repaired drinking water facilities in the villages.
+\vspace{.5cm}
+\begin{figure}[h!]
+	\caption{\footnotesize{Names and description of variables from Chattopadhyay and Duflo (2004).}}
+	\vspace{.5cm}
+	\centering
+	\label{fig:women_desc}
+\end{figure}		
+
+\newpage
+\lstinputlisting[language=R, firstline=70, lastline=73]{PS02_AnswersDH.R}
+\begin{enumerate}
+	\item [(a)] State a null and alternative (two-tailed) hypothesis. 
+	
+	\noindent
+	Step 1 - Assumptions:
+	\newline 
+	1. Data are randomly generated and quantitative.
+	\newline
+	2. Observations are independent.
+	\newline
+	3. There is a linear relationship between the explanatory and outcome variables.
+	\newline
+	4. The errors are normally distributed with zero mean and a constant variance. 
+	
+	Step 2 - Hypotheses:
+	
+	H0: The reservation policy has had no effect on the number of new or repaired drinking water facilities in the villages
+	
+	H1: The reservation policy has had an effect on the number of new or repaired drinking water facilities in the villages
+	
+	\newpage
+	
+	\vspace{1cm}
+	\item [(b)] Run a bivariate regression to test this hypothesis in \texttt{R} (include your code!).
+	\lstinputlisting[language=R, firstline=84, lastline=88]{PS02_AnswersDH.R}
+	
+	\noindent
+	Step 3: Test Statistic for X variable (reserved)  = 2.344
+	\newline
+	Step 4: P-Value = 0.0197
+	
+	P-value is less than 0.05, therefore the variable, reserved, is statistically significant at the 5\% significance level.
+	
+	
+\begin{table}[!htbp] \centering 
+	\caption{} 
+	\label{} 
+	\begin{tabular}{@{\extracolsep{5pt}}lc} 
+		\\[-1.8ex]\hline 
+		\hline \\[-1.8ex] 
+		& \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+		\cline{2-2} 
+		\\[-1.8ex] & water \\ 
+		\hline \\[-1.8ex] 
+		reserved & 9.252$^{**}$ \\ 
+		& (3.948) \\ 
+		& \\ 
+		Constant & 14.738$^{***}$ \\ 
+		& (2.286) \\ 
+		& \\ 
+		\hline \\[-1.8ex] 
+		Observations & 322 \\ 
+		R$^{2}$ & 0.017 \\ 
+		Adjusted R$^{2}$ & 0.014 \\ 
+		Residual Std. Error & 33.446 (df = 320) \\ 
+		F Statistic & 5.493$^{**}$ (df = 1; 320) \\ 
+		\hline 
+		\hline \\[-1.8ex] 
+		\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+	\end{tabular} 
+
+	Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+	R package version 5.2.3. https://CRAN.R-project.org/package=stargazer 
+\end{table} 
+ 
+	
+	\newpage
+	\vspace{9cm}
+	\item [(c)] Interpret the coefficient estimate for reservation policy. 
+
+	Step 5 - Conclusions:
+	\newline
+	The coefficient for the reservation variable indicates that on average, GPs that were reserved for female leaders are associated with a 9.252 unit increase in the number of new or repaired water facilities in the village relative to GPs that do not have the reservation policy in place. Assuming a significance level of a = 0.05, this variable is statistically significant at the 5\% significance level (since the p-value is less than 0.05). Hence we can reject the null hypothesis that on average there is no difference in the number of new or repaired drinking water facilities in villages that have the reservation policy relative to villages that don't have the reservation policy.
+	
+	The constant indicates that on average, when there is no reservation policy in the GP, the village will have 14.738 new or repaired water facilities since the reserve policy started. On average, villages with the reservation policy in place will have 23.99 (14.738 + 9.252) new or repaired water facilities since the reserve policy started.
+	
+\end{enumerate}
+
+\end{document}
