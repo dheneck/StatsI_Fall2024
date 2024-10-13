@@ -48,12 +48,13 @@ pval_chi
 # given formula
 
 # Standardised Residuals
-c11 <- (14-fe1)/sqrt(fe1)  
-c12 <- (6-fe2)/sqrt(fe2) 
-c13 <- (7-fe3)/sqrt(fe3) 
-c14 <- (7-fe4)/sqrt(fe4)
-c15 <- (7-fe5)/sqrt(fe5)
-c16 <- (1-fe6)/sqrt(fe6) 
+z11 = (14-fe1)/sqrt(fe1*(1-row1_total/grand_total)*(1-column1_total/grand_total))
+z12 = (6-fe2)/sqrt(fe2*(1-row1_total/grand_total)*(1-column2_total/grand_total))
+z13 = (7-fe3)/sqrt(fe3*(1-row1_total/grand_total)*(1-column3_total/grand_total))
+z21 = (7-fe4)/sqrt(fe4*(1-row2_total/grand_total)*(1-column1_total/grand_total))
+z22 = (7-fe5)/sqrt(fe5*(1-row2_total/grand_total)*(1-column2_total/grand_total))
+z23 = (1-fe6)/sqrt(fe6*(1-row2_total/grand_total)*(1-column3_total/grand_total))
+
 
 # Question 1d
 # Cell-by-cell comparison of the residuals helps describe the pattern of 
