@@ -18,7 +18,7 @@ library(stargazer)
 stargazer(model1)
 
 ## 1c
-# prestige = 21.142 + 0.003income + 37.78professional - 0.002income*professional
+# prestige = 21.142 + 0.003income + 37.781professional - 0.002income*professional
 
 ## 1d
 # A one unit increase in income is associated with a 0.003 unit increase in prestige when
