@@ -8,7 +8,7 @@ help(Prestige)
 ################
 
 ## 1a
-Prestige$professional <- ifelse(Prestige$type == "prof", 1,0)
+Prestige$professional <- as.factor(ifelse(is.na(Prestige$type), NA, ifelse(Prestige$type == "prof", 1, 0)))
 table(Prestige$professional)
 
 
@@ -55,8 +55,9 @@ prof - non_prof
 # Quantitative data
 # Data randomly sampled
 # Errors are normally distributed with constant variance and 0 mean 
+# There is a linear relationship between the independent and dependent variables 
 
-# Step 2: Hypotheses 
+#Step 2: Hypotheses 
 # H0: The yard signs have no effect on vote share 
 # H1: The yard signs have an effect on vote share 
 
